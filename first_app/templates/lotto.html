@@ -1,16 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>추천번호</h1>
-    <p>{{pick_num}} 이걸로 사보는건 어때요?</p>
+{% extends 'base.html' %}
 
+{% block content %}
     <h1>이번주 당첨 번호</h1>
     <p>{{lotto_number}}</p>
-    <p>{{num}}개 일치</p>
-</body>
-</html>
+    {% for num in lotto_number %}
+        <div class="border rounded-circle d-inline-block bg-danger" style="width:25px">{{num}}</div>
+
+    {% endfor %}
+
+    <h1>추천 번호</h1>
+
+    {% for num in pick_num %}
+        <div class="border rounded-circle d-inline-block bg-success" style="width:25px">{{num}}</div>
+    {% endfor %}
+
+
+    {% if num > 1 %}
+        <p>{{num}}개 일치. 당첨!</p>
+    {% else %}
+        <p>0개 일치. 꽝</p>
+    {% endif %}
+
+{% endblock %}

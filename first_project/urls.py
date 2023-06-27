@@ -26,4 +26,9 @@ urlpatterns = [
     
     # 로또 1-45 6개 추출해서 추천번호 생성
     path('lotto/', views.lotto),
+    
+    path('hello/<str:name>/', views.hello),
+    path('cube/<int:num>/', views.cube),
+
+    path('posts/', views.posts)
 ]

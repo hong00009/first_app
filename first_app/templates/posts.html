@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    {% for key, value in post_dict.items %}
+        <div class="card col-6 col-md-4 col-lg-3">
+            <img src="https://picsum.photos/200/200?random={{key}}}}
+            " class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{key}}</h5>
+                <p class="card-text">{{value}}</p>
+                <a href="#" class="btn btn-primary">Go</a>
+            </div>
+        </div> 
+    {% endfor %}
+</div>
+
+{% endblock %}

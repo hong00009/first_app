@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import random
 import requests
+from faker import Faker
 
 # Create your views here.
 
@@ -50,9 +51,35 @@ def lotto(request):
     num = len(set(lotto_number) & set(pick_num))
 
     result = {
-        'lotto_number': lotto_number,
         'pick_num' : pick_num,
+        'lotto_number': lotto_number,
         'num' : num,
     }
 
     return render(request, 'lotto.html', result)
+
+
+def hello(request,name):
+    result = {
+        'name': name,
+    }
+    return render(request, 'hello.html', result)
+
+
+def cube(request, num):
+    result ={
+        'num' : num,
+        'cube' : num ** 3,
+    }
+    return render(request, 'cube.html', result)
+
+def posts(request):
+    fake = Faker()
+
+    post_dict = {}
+    for i in range(20):
+        post_dict[fake.text(max_nb_chars=10)] = fake.text()
+    result = {
+        'post_dict' : post_dict
+    }
+    return render(request, 'posts.html', result)
